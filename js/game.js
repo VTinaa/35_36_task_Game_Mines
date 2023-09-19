@@ -203,29 +203,33 @@ export class Game {
     helpHandler() {
         for (let i = 0; i < this.board.length; i++) {
             for (let j = 0; j < this.board.length; j++) {
-                const cell = this.board[i][j];
+                let cell = this.board[i][j];
 
-                // Додаємо обробник події для лівого кліку
+                
                 cell.addEventListener('click', () => {
                     this.revelod(i, j);
                 });
 
-                // Додаємо обробник події для правого кліку (контекстне меню)
+                
                 cell.addEventListener('contextmenu', (event) => {
-                    event.preventDefault(); // Забороняємо стандартне контекстне меню
-                    this.toggleFlag(i, j); // Встановлюємо або видаляємо флажок
+                    event.preventDefault();
+                    this.toggleFlag(i, j);
                 });
             }
         }
     }
 
     toggleFlag(x, y) {
-        if (!this.flag[x][y]) {
+        if (!this.flag[x][y] && this.board[x][y].textContent == "") {
             this.board[x][y].textContent = "🚩";
-        } else {
+        } 
+        else if(!this.flag[x][y] && this.board[x][y].textContent == "🚩"){
+            this.board[x][y].textContent = "?"
+        }
+        else if(!this.flag[x][y] ){
             this.board[x][y].textContent = "";
         }
-        this.flag[x][y] = !this.flag[x][y];
+        // this.flag[x][y] = !this.flag[x][y];
     }
 
 
