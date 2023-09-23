@@ -166,6 +166,11 @@ export class Game {
         if (number == (this.board.length ** 2) - this.mines) {
             end.classList.add('theEndd')
             end.textContent = "Ви виграли!"
+            end.insertAdjacentHTML('beforeend', "<br><button id='restart-button'> Restart </button>")
+            let restartButton = document.getElementById('restart-button');
+            restartButton.addEventListener("click", () => {
+                window.location.reload();
+            })
         }
 
     }
@@ -174,6 +179,7 @@ export class Game {
 
     endGame() { // коли натиснули по ком!рц! з м!ною
         let end = document.querySelector('.theEnd')
+        // let restartBtn = document.querySelector('.theEnd button')
         for (let i = 0; i < this.board.length; i++) {
             for (let j = 0; j < this.board.length; j++) {
 
@@ -194,6 +200,11 @@ export class Game {
         }
         end.classList.add('theEndd')
         end.textContent = "Ви програли!"
+        end.insertAdjacentHTML('beforeend', "<br><button id='restart-button'> Restart </button>")
+        let restartButton = document.getElementById('restart-button');
+        restartButton.addEventListener("click", () => {
+            window.location.reload();
+        })
 
     }
 
@@ -205,12 +216,12 @@ export class Game {
             for (let j = 0; j < this.board.length; j++) {
                 let cell = this.board[i][j];
 
-                
+
                 cell.addEventListener('click', () => {
                     this.revelod(i, j);
                 });
 
-                
+
                 cell.addEventListener('contextmenu', (event) => {
                     event.preventDefault();
                     this.toggleFlag(i, j);
@@ -222,11 +233,11 @@ export class Game {
     toggleFlag(x, y) {
         if (!this.flag[x][y] && this.board[x][y].textContent == "") {
             this.board[x][y].textContent = "🚩";
-        } 
-        else if(!this.flag[x][y] && this.board[x][y].textContent == "🚩"){
+        }
+        else if (!this.flag[x][y] && this.board[x][y].textContent == "🚩") {
             this.board[x][y].textContent = "?"
         }
-        else if(!this.flag[x][y] ){
+        else if (!this.flag[x][y]) {
             this.board[x][y].textContent = "";
         }
         // this.flag[x][y] = !this.flag[x][y];

@@ -61,6 +61,18 @@ body {
     /* display: none; */
   }
 
+  #restart-button {
+    width: 150px;
+    padding: 10px;
+    background-color: rgb(94, 91, 91);
+    font-weight: bold;
+    font-size: 14px;
+    border: solid 2px rgb(83, 59, 59);
+    border-radius: 4px;
+    color: rgb(209, 167, 167);
+    
+  }
+
   .img {
     width: 30px; /* Змініть розмір відповідно до ваших потреб */
     height: 30px; /* Змініть розмір відповідно до ваших потреб */
